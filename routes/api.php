@@ -24,6 +24,12 @@ Route::group([
 
 });
 
+Route::group([
+    'middleware' => 'auth:api'
+], function(){
+    Route::put('user/profile', 'App\Http\Controllers\UserController@profile');
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
